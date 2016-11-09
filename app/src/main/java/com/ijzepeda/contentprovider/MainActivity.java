@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         contentValues.put(GameProvider.NAME, ((EditText)findViewById(R.id.editText2)).getText().toString());
         contentValues.put(GameProvider.GAME_ID,((EditText)findViewById(R.id.editText3)).getText().toString());
+//contentValues.put(GameProvider.NAME, "falso");
+//        contentValues.put(GameProvider.GAME_ID,100);
 
         Uri uri=getContentResolver().insert(GameProvider.CONTENT_URI,contentValues);
 

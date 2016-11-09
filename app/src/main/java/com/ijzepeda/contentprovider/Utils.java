@@ -6,7 +6,7 @@ package com.ijzepeda.contentprovider;
 
 public class Utils {
 
-    public static final String CONTENT_URL="content://com.example.MyApplication.StudentsProvider";
+    public static final String CONTENT_URL="content://com.ijzepeda.contentprovider.GameProvider";//content://com.example.MyApplication.StudentsProvider";
 
 
 

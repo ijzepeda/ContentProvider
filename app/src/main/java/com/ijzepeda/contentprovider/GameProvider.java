@@ -21,7 +21,7 @@ import java.util.HashMap;
  */
 
 public class GameProvider extends ContentProvider {
-static final String PROVIDER_NAME ="com.ijzepeda.ContentProvider.GameProvider";
+static final String PROVIDER_NAME ="com.ijzepeda.contentprovider.GameProvider";//content://com.ijzepeda.ContentProvider.GameProvider/games
 static final String URL="content://"+PROVIDER_NAME+"/games";
 static final Uri CONTENT_URI=Uri.parse(URL);
 static final String _ID="_id";
@@ -33,7 +33,9 @@ private static HashMap<String,String> GAMES_PROJECTION_MAP;
     static final UriMatcher uriMatcher;
     static{
         uriMatcher=new UriMatcher(UriMatcher.NO_MATCH);
+//        uriMatcher.addURI(PROVIDER_NAME,"",GAMES);
         uriMatcher.addURI(PROVIDER_NAME,"games",GAMES);
+//        uriMatcher.addURI(PROVIDER_NAME,"/games",GAMES);
         uriMatcher.addURI(PROVIDER_NAME,"games/#",GAMES_ID);
     }
     /*Database stuff*/
@@ -44,7 +46,7 @@ static final int DATABASE_VERSION=1;
 static final String CREATE_DB_TABLE= "CREATE TABLE "+ GAMES_TABLE_NAME +
         " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
         " name TEXT NOT NULL,"+
-        " grade TEXT NOT NULL);";
+        " game_id TEXT NOT NULL);";
 
 //Helper class creates and manage the provider data repository
 
@@ -106,13 +108,13 @@ if(sortOrder==null||sortOrder.equals("")){
     public String getType(Uri uri) {
         switch(uriMatcher.match(uri)){
             case GAMES:
-                return "vnd.android.cursor.dir/vnd.example.students";
-//                return "com.android.cursor.dir/com.ijzepeda.games";
+//                return "vnd.android.cursor.dir/vnd.example.students";
+                return "com.android.cursor.dir/com.ijzepeda.games";
             case GAMES_ID:
-                return "vnd.android.cursor.item/vnd.example.students";
-//                return "com.android.cursor.item/com.ijzepeda.games";
+//                return "vnd.android.cursor.item/vnd.example.students";
+                return "com.android.cursor.item/com.ijzepeda.games";
             default:
-                throw new IllegalArgumentException("Uknown URI "+uri);
+                throw new IllegalArgumentException(">Unknown URI "+uri);
         }
 
     }
